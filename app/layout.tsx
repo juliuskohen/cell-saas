@@ -1,5 +1,5 @@
 // app/layout.tsx
-import "./globals.css";           // your global styles
+import "../src/app/globals.css";       // your global styles
 import { ReactNode } from "react";
 
 // If you need CopilotKit provider *globally*, import it here
