@@ -1,0 +1,14 @@
+{
+    "openapi": "3.0.0",
+    "info": { "title": "Demo API", "version": "1.0.0" },
+    "paths": {
+      "/tasks": {
+        "get":  { "operationId": "listTasks",  "responses": { "200": { "description": "OK" } } },
+        "post": { "operationId": "createTask", "responses": { "201": { "description": "Created" } } }
+      },
+      "/tasks/{id}": {
+        "get": { "operationId": "getTask",    "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } } ], "responses": { "200": { "description": "OK" } } }
+      }
+    }
+  }
+  
