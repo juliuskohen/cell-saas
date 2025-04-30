@@ -1,4 +1,4 @@
-import { BufferMemory } from "langchain/memory";
+//import { BufferMemory } from "langchain/memory";
 import { ChatOpenAI } from "@langchain/openai";
 import { OpenApiToolkit } from "langchain/agents";
 import { JsonSpec } from "langchain/tools";
@@ -6,6 +6,8 @@ import { createReactAgent } from "@langchain/langgraph/prebuilt";
 
 // Indicate this is an Edge Function
 export const runtime = "edge";
+
+
 
 export async function POST(req: Request): Promise<Response> {
   const body = await req.json();
