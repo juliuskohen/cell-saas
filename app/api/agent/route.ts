@@ -18,12 +18,11 @@ export async function POST(req: Request): Promise<Response> {
     temperature: 0.3,
     streaming: true 
   });
-  const memory = new BufferMemory({ memoryKey: "chat_history" });
+ //const memory = new BufferMemory({ memoryKey: "chat_history" });
 
   // Load or define OpenAPI spec (embedded or from URL)
   // For example, import a local JSON file or URL:
-  // const apiSpec = await fetch("https://api.example.com/openapi.json").then(r => r.json());
-  const apiSpec = {/* JSON OpenAPI spec here */};
+  const apiSpec = await fetch("https://api.example.com/openapi.json").then(r => r.json());
   const toolkit = new OpenApiToolkit(new JsonSpec(apiSpec), model, {
     Authorization: `Bearer ${process.env.API_KEY || ""}`
   });
@@ -44,7 +43,7 @@ export async function POST(req: Request): Promise<Response> {
   const encoder = new TextEncoder();
   const stream = new TransformStream();
   const writer = stream.writable.getWriter();
-  const events = await agentExecutor.stream({ messages }, { streamMode: "values" });
+  const events = await agentExecutor.stream({messages}, { streamMode: "values" });
 
   for await (const event of events) {
     const lastMsg = event.messages[event.messages.length - 1];
